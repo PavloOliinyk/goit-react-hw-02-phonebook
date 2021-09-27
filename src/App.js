@@ -7,23 +7,32 @@ import { v4 as uuidv4 } from 'uuid';
 class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      // { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      // { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      // { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
     name: '',
     number: '',
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
+  handleChange = e => {
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const { name, contacts } = this.state;
+    const alert = contacts.some(contact => contact.name === name);
+
+    if (alert) {
+      window.alert(`${name} is already in contacts`);
+      return;
+    }
+
     this.addContact();
     this.reset();
   };
@@ -36,10 +45,11 @@ class App extends Component {
   };
 
   addContact = () => {
+    const { name, number } = this.state;
     const contact = {
-      name: this.state.name,
+      name,
       id: uuidv4(),
-      number: this.state.number,
+      number,
     };
 
     this.setState(({ contacts }) => ({
@@ -47,7 +57,15 @@ class App extends Component {
     }));
   };
 
+  filteredContacts = () => {
+    return [...this.state.contacts].filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter),
+    );
+  };
+
   render() {
+    const filteredContacts = this.filteredContacts();
+
     return (
       <div>
         <h1>Phonebook</h1>
@@ -83,7 +101,7 @@ class App extends Component {
         </form>
 
         <h2>Contacts</h2>
-        {/* <Filter /> */}
+
         <div>
           <label>
             Find contacts by name
@@ -96,7 +114,7 @@ class App extends Component {
           </label>
         </div>
         <ul>
-          {this.state.contacts.map(contact => (
+          {filteredContacts.map(contact => (
             <li key={uuidv4()}>
               {contact.name}: {contact.number}
             </li>
