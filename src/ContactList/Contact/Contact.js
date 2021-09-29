@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Contact extends Component {
   render() {
     const {
       contact: { name, number, id },
-      deleteContact
+      deleteContact,
     } = this.props;
 
     return (
@@ -16,5 +17,10 @@ class Contact extends Component {
     );
   }
 }
+
+Contact.propTypes = {
+  deleteContact: PropTypes.func.isRequired,
+  contact: PropTypes.objectOf(PropTypes.string.isRequired),
+};
 
 export default Contact;
