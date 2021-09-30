@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+.card {
+  text-align: center;
+  background: #242625;
+  border-radius: 10px;
+
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardContent {
+  background: #191a19;
+
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 16px 16px 44px #0a0a0a, -16px -16px 44px #282a28;
+  transition: 0.3s all ease-in-out;
+}
+.cardContent p {
+  font-size: 17px;
+  padding: 5px;
+}
+
+.cardContent:hover,
+.cardContent:focus {
+  box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.35);
+  transform: scale(1.04);
+}
+
+.cardButton {
+  padding: 10px;
+  border-radius: 10px;
+  background: #1f75c4;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+  border: none;
+  margin: 10px auto;
+}

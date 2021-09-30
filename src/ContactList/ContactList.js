@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import s from './ContactList.module.css';
 
 class ContactList extends Component {
   render() {
-    return <ul>{this.props.children}</ul>;
+    return (
+      <div className={s.container}>
+        <ul className={`list ${s.cardContainer}`}>{this.props.children}</ul>
+      </div>
+    );
   }
 }
 

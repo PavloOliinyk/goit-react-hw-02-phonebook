@@ -1,29 +1,30 @@
-import React, { Component } from "react";
-import ContactForm from "./ContactForm";
-import Filter from "./Filter";
-import ContactList from "./ContactList";
-import Contact from "./ContactList/Contact";
-import { v4 as uuidv4 } from "uuid";
+import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import Container from './Container';
+import ContactForm from './ContactForm';
+import Filter from './Filter';
+import ContactList from './ContactList';
+import Contact from './ContactList/Contact';
 
 class App extends Component {
   state = {
     contacts: [],
-    filter: ""
+    filter: '',
   };
 
-  deleteContact = (id) => {
+  deleteContact = id => {
     this.setState(({ contacts }) => ({
-      contacts: contacts.filter((contact) => contact.id !== id)
+      contacts: contacts.filter(contact => contact.id !== id),
     }));
   };
 
-  formSubmitHandler = (data) => {
+  formSubmitHandler = data => {
     const { contacts } = this.state;
     const { name } = data;
     const contactId = uuidv4();
     const newContact = { ...data, id: contactId };
-    const isNotUniqueContact = contacts.some(
-      (contact) => contact.name === name
+    const isNotUniqueContact = contacts.some(contact =>
+      contact.name.includes(name),
     );
 
     if (isNotUniqueContact) {
@@ -32,11 +33,11 @@ class App extends Component {
     }
 
     this.setState(({ contacts }) => ({
-      contacts: [...contacts, newContact]
+      contacts: [...contacts, newContact],
     }));
   };
 
-  changeFilter = (e) => {
+  changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
 
@@ -44,7 +45,7 @@ class App extends Component {
     const { contacts, filter } = this.state;
 
     return [...contacts].filter(({ name }) =>
-      name.toLowerCase().includes(filter)
+      name.toLowerCase().includes(filter),
     );
   };
 
@@ -54,19 +55,19 @@ class App extends Component {
       formSubmitHandler,
       changeFilter,
       deleteContact,
-      state: { filter }
+      state: { filter },
     } = this;
     const filteredContacts = filterContacts();
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <h1 className="title">Phonebook</h1>
         <ContactForm onSubmit={formSubmitHandler} />
-        <h2>Contacts</h2>
-
+        <h2 className="title">Contacts</h2>
         <Filter onChange={changeFilter} filter={filter} />
+
         <ContactList deleteContact={deleteContact}>
-          {filteredContacts.map((contact) => {
+          {filteredContacts.map(contact => {
             const contactId = uuidv4();
 
             return (
@@ -78,7 +79,7 @@ class App extends Component {
             );
           })}
         </ContactList>
-      </div>
+      </Container>
     );
   }
 }
