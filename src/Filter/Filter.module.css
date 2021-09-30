@@ -1,7 +1,9 @@
 .screenBodyItem {
   display: block;
-  text-align: center;
+
   padding: 10px;
+
+  text-align: center;
 }
 
 .screenBodyItem.left {
@@ -11,18 +13,24 @@
 
 .appFormGroup {
   display: block;
+
   margin-bottom: 25px;
+
   color: #ddd;
+
   font-size: 18px;
 }
 
 .appFormControl {
-  padding: 10px 0;
   margin-left: 15px;
-  color: #ddd;
-  font-size: 14px;
-  outline: none;
+  padding: 10px 0;
+
   transition: border-color 0.2s;
+
+  color: #ddd;
+  outline: none;
+
+  font-size: 14px;
 }
 
 .appFormControl::placeholder {
@@ -35,9 +43,10 @@
 
 .appFormControl {
   color: #ea1d6f;
-  font-size: 14px;
 
   outline: none;
+
+  font-size: 14px;
 }
 
 .appFormControl:hover {

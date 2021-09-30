@@ -1,14 +1,16 @@
 body {
   background: linear-gradient(to right, #ea1d6f 0%, #eb466b 100%);
+
   font-size: 12px;
 }
 
 body,
 button,
 input {
+  letter-spacing: 1.4px;
+
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  letter-spacing: 1.4px;
 }
 
 .background {
@@ -22,30 +24,36 @@ input {
 
 .screen {
   position: relative;
-  background: #3e3e3e;
+
   border-radius: 15px;
+  background: #3e3e3e;
 }
 
-.screen:after {
-  content: '';
-  display: block;
+.screen::after {
   position: absolute;
+  z-index: -1;
   top: 0;
-  left: 20px;
   right: 20px;
   bottom: 0;
+  left: 20px;
+
+  display: block;
+
+  content: '';
+
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  z-index: -1;
 }
 
 .screenHeader {
   display: flex;
   align-items: center;
+
   padding: 10px 20px;
-  background: #4d4d4f;
+
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  background: #4d4d4f;
 }
 
 .screenHeaderLeft {
@@ -54,9 +62,11 @@ input {
 
 .screenHeaderButton {
   display: inline-block;
+
   width: 8px;
   height: 8px;
   margin-right: 3px;
+
   border-radius: 8px;
   background: white;
 }
@@ -81,6 +91,7 @@ input {
   width: 3px;
   height: 3px;
   margin-left: 2px;
+
   border-radius: 8px;
   background: #999;
 }
@@ -91,6 +102,7 @@ input {
 
 .screenBodyItem {
   flex: 1;
+
   padding: 50px;
 }
 
@@ -100,44 +112,59 @@ input {
 }
 
 .appTitle {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  position: relative;
+
   color: #ea1d6f;
+
   font-size: 26px;
 }
 
-.appTitle:after {
-  content: '';
-  display: block;
+.appTitle::after {
   position: absolute;
-  left: 0;
   bottom: -10px;
+  left: 0;
+
+  display: block;
+
   width: 25px;
   height: 4px;
+
+  content: '';
+
   background: #ea1d6f;
 }
 
 .appContact {
   margin-top: auto;
-  font-size: 8px;
+
   color: #888;
+
+  font-size: 8px;
 }
 
 .appFormGroup {
   display: block;
+
   margin-bottom: 25px;
+
   color: #ea1d6f;
+
   font-size: 18px;
 }
 
 .appFormControl {
   width: 100%;
   padding: 10px 0;
-  color: #ddd;
-  font-size: 14px;
-  outline: none;
+
   transition: border-color 0.2s;
+
+  color: #ddd;
+  outline: none;
+
+  font-size: 14px;
 }
 
 .appFormControl::placeholder {
@@ -150,9 +177,10 @@ input {
 
 .appFormControl {
   color: #ea1d6f;
-  font-size: 14px;
 
   outline: none;
+
+  font-size: 14px;
 }
 
 .appFormControl:hover {
@@ -176,7 +204,7 @@ input {
     margin-right: 12px;
   }
 
-  .appTitle:after {
+  .appTitle::after {
     display: none;
   }
 }
@@ -192,29 +220,32 @@ input {
 }
 
 .appFormButton {
-  margin: 0 auto;
-  border-radius: 40em;
-  border-style: none;
-  box-shadow: #adcfff 0 -12px 6px inset;
-
-  color: #000000;
-  cursor: pointer;
   display: block;
+
+  margin: 0 auto;
+  padding: 1rem 1.3rem;
+
+  cursor: pointer;
+
+  transition: all 0.15s;
+  letter-spacing: -0.24px;
+
+  color: #000;
+  border-style: none;
+  border-radius: 40em;
+
+  outline: none;
+  box-shadow: #adcfff 0 -12px 6px inset;
 
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: -0.24px;
-
-  outline: none;
-  padding: 1rem 1.3rem;
-
-  transition: all 0.15s;
 }
 
 .appFormButton:hover {
+  transform: scale(1.05);
+
   background-color: #ffc229;
   box-shadow: #ff6314 0 -6px 8px inset;
-  transform: scale(1.05);
 }
 
 .appFormButton:active {
